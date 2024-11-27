@@ -16,19 +16,17 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v3  # Check out the code from GitHub
 
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '14'  # You can specify your Node.js version here
+          node-version: 'v22.11.0'  # Specify the Node.js version
 
       - name: Install dependencies
-        run: |
-          npm install
+        run: npm install  # Install dependencies using npm
 
       - name: Run tests
-        run: |
-          npm test
+        run: npm test  # Run the tests using the test script in package.json
 
       
