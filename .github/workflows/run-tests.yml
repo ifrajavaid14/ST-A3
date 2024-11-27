@@ -12,23 +12,21 @@ on:
 
 jobs:
   test:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-latest  # Use the latest Ubuntu runner
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v3  # Checkout your repository code
 
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '14'  # You can specify your Node.js version here
+          node-version: '22.11.0'  # Specify the correct Node.js version
 
       - name: Install dependencies
-        run: |
-          npm install
+        run: npm install  # Install dependencies from package.json
 
       - name: Run tests
-        run: |
-          npm test
+        run: npm test  # Run the tests using the 'test' script from package.json
 
       
