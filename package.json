@@ -1,0 +1,35 @@
+{
+  "name": "st-a3",
+  "version": "1.0.0",
+  "description": "CI/CD Pipeline Project",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js",
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ifrajavaid14/ST-A3.git"
+  },
+  "keywords": [
+    "CI/CD",
+    "GitHub",
+    "Workflow",
+    "Pipeline",
+    "Integration",
+    "Deployment"
+  ],
+  "author": "Ifra Javeed",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ifrajavaid14/ST-A3/issues"
+  },
+  "homepage": "https://github.com/ifrajavaid14/ST-A3#readme",
+  "dependencies": {
+    "express": "^4.21.1"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0"
+  }
+}
