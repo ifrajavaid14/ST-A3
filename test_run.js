@@ -1,32 +1,26 @@
-import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
+const Login = require('./login'); // Adjust the path as needed
 
-class LoginTest {
+describe('Login Tests', () => {
+  const login = new Login();
 
-    private final Login login = new Login();
+  test('Invalid login should return false', () => {
+    expect(login.validate('ifrajavaid@example.com', 'password456')).toBe(false);
+  });
 
-    @Test
-    public void testInValidLogin() {
-        assertFalse(login.validate("ifrajavaid@example.com", "password456"), "InValid login should return false.");
+  test('Invalid email should return false', () => {
+    expect(login.validate('invalid@example.com', 'password123')).toBe(false);
+  });
 
-    }
+  test('Incorrect password should return false', () => {
+    expect(login.validate('johndoe@example.com', 'wrong password')).toBe(false);
+  });
 
-    @Test
-    public void testInvalidEmail() {
-        assertFalse(login.validate("invalid@example.com", "password123"), "Invalid email should return false.");
-    }
+  test('Empty fields should return false', () => {
+    expect(login.validate('', '')).toBe(false);
+  });
 
-    @Test
-    public void testIncorrectPassword() {
-        assertFalse(login.validate("johndoe@example.com", "wrong password"), "Incorrect password should return false.");
-    }
+  test('SQL injection attempt should return false', () => {
+    expect(login.validate("' OR 1=1 --", 'password123')).toBe(false);
+  });
+});
 
-    @Test
-    public void testEmptyFields() {
-        assertFalse(login.validate("", ""), "Empty fields should return false.");
-    }
-
-    @Test
-    public void testSQLInjection() {
-        assertFalse(login.validate("' OR 1=1 --", "password123"), "SQL injection attempt should return false.");
-    }
