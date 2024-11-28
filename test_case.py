@@ -7,7 +7,7 @@ class LoginTest {
 
     @Test
     public void testInValidLogin() {
-        assertFalse(login.validate("umairlatif@example.com", "password456"), "InValid login should return false.");
+        assertFalse(login.validate("ifrajavaid@example.com", "password456"), "InValid login should return false.");
 
     }
 
