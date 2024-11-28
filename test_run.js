@@ -4,6 +4,8 @@ describe('Login Tests', () => {
   const login = new Login();
 
   test('Invalid login should return false', () => {
+    // Example change
+    console.log('Testing CI/CD pipeline');
     expect(login.validate('ifrajavaid@example.com', 'password456')).toBe(false);
   });
 
@@ -23,4 +25,5 @@ describe('Login Tests', () => {
     expect(login.validate("' OR 1=1 --", 'password123')).toBe(false);
   });
 });
+
 
