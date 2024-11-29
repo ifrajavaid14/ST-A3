@@ -1,4 +1,4 @@
-const Login = require('../login');  // Correct relative path to login.js
+const Login = require('../login.js');  // Correct relative path to login.js
 
 describe('Login Tests', () => {
   const login = new Login();
