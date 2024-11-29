@@ -1,4 +1,4 @@
-const Login = require('./login'); // Adjust the path as needed
+const Login = require('./login.js'); // Adjust the path as needed
 
 describe('Login Tests', () => {
   const login = new Login();
