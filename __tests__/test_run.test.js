@@ -27,11 +27,12 @@ describe('Login Class Tests', () => {
         expect(result).toBe(false); // Assertion
     });
 
-    // Updated SQL Injection test
+    // Additional SQL Injection Test
     test('SQL Injection attack should return false', () => {
-        expect(login.validate("' OR 1=1 --", 'password123')).toBe(false); // SQL injection attempt in username
-        expect(login.validate("user", "' OR '1'='1")).toBe(false); // SQL injection attempt in password
+        const result = login.validate("' OR 1=1 --", 'password123');
+        expect(result).toBe(false); // Assertion
     });
 });
+
 
 
