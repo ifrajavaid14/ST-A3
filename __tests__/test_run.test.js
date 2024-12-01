@@ -1,25 +1,32 @@
-const Login = require('./login.js'); // Adjust the path as needed
+const Login = require('../login'); // Adjust the path if login.js is in a different directory
 
-describe('Login Tests', () => {
-  const login = new Login();
+describe('Login Class Tests', () => {
+    let login;
 
-  test('Invalid login should return false', () => {
-    // Example change
-    console.log('Testing CI/CD pipeline');
-    expect(login.validate('ifrajavaid@example.com', 'password456')).toBe(false);
-  });
+    beforeEach(() => {
+        login = new Login(); // Create a new instance before each test
+    });
 
-  test('Invalid email should return false', () => {
-    expect(login.validate('invalid@example.com', 'password123')).toBe(false);
-  });
+    test('Valid login credentials should return true', () => {
+        const result = login.validate('user', 'pass');
+        expect(result).toBe(true); // Assertion
+    });
 
-  test('Incorrect password should return false', () => {
-    expect(login.validate('johndoe@example.com', 'wrong password')).toBe(false);
-  });
+    test('Invalid username should return false', () => {
+        const result = login.validate('wrongUser', 'pass');
+        expect(result).toBe(false); // Assertion
+    });
 
-  test('Empty fields should return false', () => {
-    expect(login.validate('', '')).toBe(false);
-  });
+    test('Invalid password should return false', () => {
+        const result = login.validate('user', 'wrongPass');
+        expect(result).toBe(false); // Assertion
+    });
+
+    test('Both username and password invalid should return false', () => {
+        const result = login.validate('wrongUser', 'wrongPass');
+        expect(result).toBe(false); // Assertion
+    });
+});
 
   test('SQL injection attempt should return false', () => {
     expect(login.validate("' OR 1=1 --", 'password123')).toBe(false);
