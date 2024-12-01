@@ -1,4 +1,4 @@
-const Login = require('../login'); // Adjust the path if login.js is in a different directory
+const Login = require('../login'); // Correct relative path to login.js
 
 describe('Login Class Tests', () => {
     let login;
@@ -26,5 +26,11 @@ describe('Login Class Tests', () => {
         const result = login.validate('wrongUser', 'wrongPass');
         expect(result).toBe(false); // Assertion
     });
+
+    // Additional SQL Injection Test
+    test('SQL Injection attack should return false', () => {
+        const result = login.validate("' OR 1=1 --", 'password123');
+        expect(result).toBe(false); // Assertion
+    });
 });
-;
+
